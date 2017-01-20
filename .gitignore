@@ -1,3 +1,8 @@
-.DS_Store
+workspace.xml
 .idea
 node_modules
+**.js.map
+**.css.map
+src/css/
+src/js/
+.DS_Store
