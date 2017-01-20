@@ -41,7 +41,9 @@ const DIST_FILES = [
   `${IMAGE_FOLDER}/**/**`,
   `${CSS_FOLDER}/**/*.css`,
   `${JS_FOLDER}/**/*.js`,
-  `${SRC_FOLDER}/sounds/**/**`,
+  `${SRC_FOLDER}/libs/**`,
+  `${SRC_FOLDER}/h2md/**`,
+  `${SRC_FOLDER}/sounds/**`,
 ];
 
 /* ======= 設定部分終了 =========== */
