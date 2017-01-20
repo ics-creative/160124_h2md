@@ -1,0 +1,40 @@
+@import "mixins/variables";
+@import "mixins/base";
+@import "mixins/buttons";
+
+$colors: (
+    color1:#f1d5b5,
+    color2:#f3b38c,
+    color3:#be7657
+);
+
+.sampleBox1 {
+  background-color: map-get($colors, color1);
+}
+
+.sampleBox2 {
+  background-color: map-get($colors, color2);
+}
+
+.sampleBox3 {
+  background-color: map-get($colors, color3);
+}
+
+#movieFrame {
+  position: relative;
+
+  .playButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+#movieFrame.playing {
+  .playButton {
+    display: none;
+  }
+}

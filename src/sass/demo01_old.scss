@@ -1,0 +1,34 @@
+@import "mixins/variables";
+@import "mixins/base";
+
+$colors: (
+    color1:#27B6F4,
+    color2:#229FF2,
+    color3:#186CDC
+);
+
+.sampleBox1 {
+  background-color: map-get($colors, color1);
+}
+
+.sampleBox2 {
+  background-color: map-get($colors, color2);
+}
+
+.sampleBox3 {
+  background-color: map-get($colors, color3);
+}
+
+.mainVisualArea {
+  position: relative;
+  .logo {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
