@@ -1,7 +1,12 @@
 /**
  * Sassのコンパイルタスク
+ *
+ * @author ICS-Kano
  */
-const config = require("../config");
+
+const path = require("path");
+
+const config = require("../../build_config");
 const taskName = require("../taskName");
 
 const gulp = require("gulp");
@@ -15,9 +20,9 @@ const plumber = require("gulp-plumber");
 gulp.task(taskName.sassCompile, () => {
   return gulp.src(config.sassFile)
     .pipe(plumber({
-      errorHandler: function(err) {
+      errorHandler: function (err) {
         console.log(err.messageFormatted);
-        this.emit('end');
+        this.emit("end");
       }
     }))
     .pipe(sourcemaps.init())

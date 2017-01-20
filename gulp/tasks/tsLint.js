@@ -1,7 +1,9 @@
 /**
- * TypeScriptのリントチェック
+ * TypeScriptのLintチェック
+ *
+ * @author ICS-Kano
  */
-const config = require("../config");
+const config = require("../../build_config");
 const taskName = require("../taskName");
 
 const gulp = require("gulp");

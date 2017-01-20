@@ -1,11 +1,10 @@
-const path = require("path");
+// ビルド設定ファイル
+const buidConfig = require("./build_config");
+
+const entry = {};
 
 let webpackConfig = {
-  entry: {
-    demo01: "./src/ts/demo01.ts",
-    demo02: "./src/ts/demo02.ts",
-    demo03: "./src/ts/demo03.ts"
-  },
+  entry: buidConfig.tsEntryFiles,
   output: {
     filename: "[name].js"
   },
