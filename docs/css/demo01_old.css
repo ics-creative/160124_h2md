@@ -1,0 +1,80 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "serif";
+  color: #151515;
+}
+
+body > section {
+  padding: 10px;
+}
+
+a:active {
+  opacity: 0.8;
+}
+
+.box {
+  min-height: 40px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.column > .box {
+  width: 49%;
+  width: calc(50% - 5px);
+}
+
+#__bs_notify__ {
+  display: none !important;
+}
+
+.sampleBox1 {
+  background-color: #27B6F4;
+}
+
+.sampleBox2 {
+  background-color: #229FF2;
+}
+
+.sampleBox3 {
+  background-color: #186CDC;
+}
+
+.mainVisualArea {
+  position: relative;
+}
+
+.mainVisualArea .logo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=demo01_old.css.map */

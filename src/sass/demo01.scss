@@ -1,0 +1,32 @@
+@import "mixins/variables";
+@import "mixins/base";
+
+$colors: (
+    color1:#F0538C,
+    color2:#1773F0,
+    color3:#2992F4
+);
+
+.sampleBox1 {
+  background-color: map-get($colors, color1);
+}
+
+.sampleBox2 {
+  background-color: map-get($colors, color2);
+}
+
+.sampleBox3 {
+  background-color: map-get($colors, color3);
+}
+
+#playerSection {
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  pointer-events: none;
+}
+
+#playerWrapper {
+  position: absolute;
+  left: 0;
+}

@@ -1,0 +1,31 @@
+@import "mixins/variables";
+@import "mixins/base";
+
+$colors: (
+    color1:#a0cbe2,
+    color2:#e5d6da,
+    color3:#ede3c8
+);
+
+body > section {
+  padding-bottom: 280px;
+}
+
+.sampleBox1 {
+  background-color: map-get($colors, color1);
+}
+
+.sampleBox2 {
+  background-color: map-get($colors, color2);
+}
+
+.sampleBox3 {
+  background-color: map-get($colors, color3);
+}
+
+.movieFrame {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+

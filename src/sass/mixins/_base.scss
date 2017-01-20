@@ -1,0 +1,42 @@
+@import "variables";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "serif";
+  color: #151515;
+}
+
+body > section {
+  padding: $MARGIN;
+}
+
+a:active {
+  opacity: 0.8;
+}
+
+.box {
+  min-height: 40px;
+  margin-bottom: $MARGIN;
+  box-sizing: border-box;
+  padding: $MARGIN / 2;
+}
+
+.column {
+  display: flex;
+  justify-content: space-between;
+  > .box {
+    width: 49%;
+    width: calc(50% - 5px);
+  }
+}
+
+#__bs_notify__ {
+  display: none !important;
+}

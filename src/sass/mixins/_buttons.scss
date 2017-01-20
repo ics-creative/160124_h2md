@@ -1,0 +1,49 @@
+.playButton {
+  $borderColor: #ffffff;
+  $borderWidth: 3px;
+  $size: 70px;
+  cursor: pointer;
+
+  margin-top: 50px;
+  margin-left: 50px;
+
+  width: $size;
+  height: $size;
+  border: $borderWidth solid $borderColor;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+
+  $triangleSize: $size / 2 - 5px;
+  $iconColor: $borderColor;
+
+  &:after {
+    content: "";
+    pointer-events: none;
+    margin-left: $size / 2 - $triangleSize * 0.4;
+
+    width: 0;
+    height: 0;
+    border: $triangleSize solid transparent;
+    border-left-color: $iconColor;
+    border-top-width: $triangleSize * 0.7;
+    border-bottom-width: $triangleSize * 0.7;
+
+    transition: all 0.2s ease;
+  }
+
+  .icon {
+  }
+
+  /*
+  &:hover {
+    .icon {
+      border-left-width: $triangleSize * 0.2;
+      border-right-width: $triangleSize * 0.2;
+
+      border-color: $borderColor;
+    }
+  }
+  */
+}
