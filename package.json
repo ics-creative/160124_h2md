@@ -4,7 +4,6 @@
   "description": "",
   "main": "gulpfile.js",
   "devDependencies": {
-    "@types/jquery": "^2.0.39",
     "browser-sync": "^2.18.6",
     "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -16,7 +15,6 @@
     "gulp-sourcemaps": "^2.4.0",
     "gulp-tslint": "^7.0.1",
     "gulp-webpack": "^1.5.0",
-    "jquery": "^3.1.1",
     "require-dir": "^0.3.1",
     "ts-loader": "^1.3.3",
     "tslint": "^4.3.1",
@@ -24,7 +22,10 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "tsc": "tsc"
+    "start" : "gulp start",
+    "sass": "gulp sassCompile",
+    "tsc": "gulp tsCompile",
+    "tslint": "gulp tsLint"
   },
   "author": "",
   "license": "ISC"
