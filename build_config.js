@@ -3,6 +3,9 @@
  *
  * @author ICS-Kano
  */
+
+/* ======= 設定部分開始 =========== */
+
 /** ソースフォルダ */
 const SRC_FOLDER = "./src";
 
@@ -26,8 +29,22 @@ const TS_ENTRY_FILES_NAME = {
 /** 変換後のJS格納フォルダ */
 const JS_FOLDER = `${SRC_FOLDER}/js`;
 
+/** 画像フォルダ */
+const IMAGE_FOLDER = `${SRC_FOLDER}/images`;
+
 /** リリースファイルの格納フォルダ */
-const DIST_FOLDER = "dist";
+const DIST_FOLDER = "docs";
+
+/** リリース対象ファイルファイルの格納フォルダ */
+const DIST_FILES = [
+  `${SRC_FOLDER}/**/*.html`,
+  `${IMAGE_FOLDER}/**/**`,
+  `${CSS_FOLDER}/**/*.css`,
+  `${JS_FOLDER}/**/*.js`,
+  `${SRC_FOLDER}/sounds/**/**`,
+];
+
+/* ======= 設定部分終了 =========== */
 
 // TypeScrptのエントリーファイルの作成
 let tsEntryFiles = {};
@@ -46,6 +63,6 @@ module.exports = {
   tsFolder: TS_FOLDER,
   tsEntryFiles: tsEntryFiles,
   jsFolder: JS_FOLDER,
-  distFolder: DIST_FOLDER
+  distFolder: DIST_FOLDER,
+  distFiles: DIST_FILES
 }
-

@@ -22,7 +22,9 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "start" : "gulp start",
+    "start": "gulp start",
+    "release": "gulp createReleaseFiles",
+    "clean": "gulp cleanFiles",
     "sass": "gulp sassCompile",
     "tsc": "gulp tsCompile",
     "tslint": "gulp tsLint"

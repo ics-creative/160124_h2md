@@ -5,9 +5,10 @@
  */
 module.exports = {
   "start": "start",
-  "cleanFiles": "cleanFiles",
   "sassCompile": "sassCompile",
   "tsCompile": "tsCompile",
   "tsLint": "tsLint",
+  "cleanFiles": "cleanFiles",
+  "copyFiles" : "copyFiles",
   "createReleaseFiles": "createReleaseFiles"
 }
