@@ -51,12 +51,14 @@
 	 */
 	var Demo02 = (function () {
 	    function Demo02() {
+	        var _this = this;
 	        /** canvas要素のIDです。 */
 	        this.CANVAS_ID = "player";
 	        /** H2MD動画のパスです。 */
 	        this.H2MD_SRC = "./h2md/demo02/men_kiri.h2md";
 	        H2MDUtil_1.H2MDUtil.playH2MDMovie(this.CANVAS_ID, this.H2MD_SRC);
 	        this.resizeCanvas();
+	        window.addEventListener("resize", function () { return _this.resizeCanvas(); });
 	    }
 	    /**
 	     * canvas要素のリサイズ処理です。

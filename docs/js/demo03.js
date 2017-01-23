@@ -63,12 +63,23 @@
 	     * イベント設定です。
 	     */
 	    Demo03.prototype.addEvents = function () {
+	        var _this = this;
 	        var movieFrame = document.getElementById("playerWrapper");
-	        movieFrame.addEventListener("click", function () {
-	            var audioElement = document.getElementById("audio");
-	            audioElement.play();
-	            movieFrame.classList.add("playing");
+	        movieFrame.addEventListener("click", function (event) {
+	            _this.onMovieFrameClick(movieFrame);
 	        });
+	        window.addEventListener("resize", function () { return _this.resizeCanvas(); });
+	    };
+	    /**
+	     * movieFrameをクリックした時のイベントです。
+	     * @param movieFrame
+	     */
+	    Demo03.prototype.onMovieFrameClick = function (movieFrame) {
+	        // 音声の再生を開始します。
+	        var audioElement = document.getElementById("audio");
+	        audioElement.play();
+	        // movieFrameにプレイ中のクラスを設定します。
+	        movieFrame.classList.add("playing");
 	    };
 	    /**
 	     * H2MD動画を再生します。
