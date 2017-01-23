@@ -46,26 +46,34 @@
 
 	"use strict";
 	var H2MDUtil_1 = __webpack_require__(1);
-	window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
-	function onDOMContentLoaded() {
-	    H2MDUtil_1.H2MDUtil.playH2MDMovie("player", "./h2md/demo01/h2md_demo1125_alpha.h2md", false);
-	    resizeCanvas();
-	}
-	function resizeCanvas() {
-	    var playerSection = document.getElementById("playerSection");
-	    var playerWrapper = document.getElementById("playerWrapper");
-	    var player = document.getElementById("player");
-	    if (!player || !playerWrapper) {
-	        return;
+	/**
+	 * デモ1のクラスです。
+	 */
+	var Demo01 = (function () {
+	    function Demo01() {
+	        /** canvas要素のIDです。 */
+	        this.CANVAS_ID = "player";
+	        /** H2MD動画のパスです。 */
+	        this.H2MD_SRC = "./h2md/demo01/h2md_demo1125_alpha.h2md";
+	        H2MDUtil_1.H2MDUtil.playH2MDMovie(this.CANVAS_ID, this.H2MD_SRC, false);
+	        this.resizeCanvas();
 	    }
-	    var height = Number(player.getAttribute("height"));
-	    var width = Number(player.getAttribute("width"));
-	    var ratio = window.innerWidth / 320;
-	    playerSection.style.height = 184 * ratio + "px";
-	    playerWrapper.style.top = -82 * ratio + "px";
-	    player.style.width = 320 * ratio + "px";
-	    player.style.height = 500 * ratio + "px";
-	}
+	    /**
+	     * canvas要素のリサイズ処理です。
+	     */
+	    Demo01.prototype.resizeCanvas = function () {
+	        var player = document.getElementById("player");
+	        var playerWrapper = document.getElementById("playerWrapper");
+	        var playerSection = document.getElementById("playerSection");
+	        var ratio = window.innerWidth / 320;
+	        playerSection.style.height = 184 * ratio + "px";
+	        playerWrapper.style.top = -82 * ratio + "px";
+	        player.style.width = 320 * ratio + "px";
+	        player.style.height = 500 * ratio + "px";
+	    };
+	    return Demo01;
+	}());
+	window.addEventListener("DOMContentLoaded", function () { return new Demo01(); });
 
 
 /***/ },

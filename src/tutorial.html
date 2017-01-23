@@ -3,11 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>H2MD デモ2 - ICS MEDIA</title>
-  <link rel="stylesheet" href="css/demo02.css">
+  <title>H2MDチュートリアル</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- H2MDのライブラリを読み込みます。 -->
   <script src="libs/h2md.js"></script>
-  <script src="js/demo02.js"></script>
+  <script>
+    // Domの準備ができたら処理を実行します。
+    window.addEventListener("DOMContentLoaded", function () {
+      // H2MDを初期化します。
+      var instance = new H2MD();
+
+      // 動画を再生するcanvas要素を指定します。
+      instance.canvas("player");
+
+      // jsonpを指定します。
+      instance.jsonp(true);
+
+      // H2MD動画を読み込みます。「◯◯.h2md」の部分を指定します。
+      instance.open('./h2md/movie.h2md', function () {
+        // 動画の読み込みに成功したら、再生を開始します。
+        instance.play();
+      });
+
+      // retina対応のための処理です。
+      var canvas = document.getElementById("player");
+
+      var height = canvas.getAttribute("height");
+      var width = canvas.getAttribute("width");
+      canvas.setAttribute("width", String(Math.round(width * 2)));
+      canvas.setAttribute("height", String(Math.round(height * 2)));
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+    });
+  </script>
 </head>
 <body>
 <section>
@@ -25,34 +54,25 @@
       ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
     </div>
   </div>
-  <div class="column">
-    <div class="sampleBox3 box">
-      ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-    </div>
-    <div class="sampleBox3 box">
-      ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-    </div>
-  </div>
-  <div class="sampleBox2 box">
-    ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-  </div>
-  <div class="column">
-    <div class="sampleBox3 box">
-      ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-    </div>
-    <div class="sampleBox3 box">
-      ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-    </div>
-  </div>
   <div class="sampleBox1 box">
     ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
   </div>
   <div class="sampleBox2 box">
     ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
   </div>
+  <div class="column">
+    <div class="sampleBox3 box">
+      ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+    </div>
+    <div class="sampleBox3 box">
+      ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+    </div>
+  </div>
   <div class="movieFrame">
-    <a href="./demo02_2.html">
-      <canvas id="player" width="720" height="600"></canvas>
+    <a href="http://www.yahoo.co.jp/" target="_blank">
+      <!-- 動画を再生するcanvas要素です。要素のID、動画の幅と高さを指定します。 -->
+      <canvas id="player" width="320" height="180">
+      </canvas>
     </a>
   </div>
 </section>

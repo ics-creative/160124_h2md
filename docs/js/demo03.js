@@ -42,27 +42,38 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	"use strict";
-	var CanvasUtil_1 = __webpack_require__(2);
+	/**
+	 * デモ1のクラスです。
+	 */
 	var Demo03 = (function () {
 	    function Demo03() {
+	        /** canvas要素のIDです。 */
 	        this.CANVAS_ID = "player";
-	        this.playH2MDMovie("./h2md/demo03/fireworks.h2md");
-	        CanvasUtil_1.CanvasUtil.resizeCanvas(this.CANVAS_ID, window.innerWidth, window.innerWidth * 270 / 480);
+	        /** H2MD動画のパスです。 */
+	        this.H2MD_SRC = "./h2md/demo03/fireworks.h2md";
+	        this.playH2MDMovie(this.H2MD_SRC);
 	        this.canvasElement = document.getElementById(this.CANVAS_ID);
-	        this.dst_canvas = this.canvasElement.getContext("2d");
+	        this.context2D = this.canvasElement.getContext("2d");
+	        this.resizeCanvas();
 	        this.addEvents();
 	    }
+	    /**
+	     * イベント設定です。
+	     */
 	    Demo03.prototype.addEvents = function () {
-	        var movieFrame = document.getElementById("movieFrame");
+	        var movieFrame = document.getElementById("playerWrapper");
 	        movieFrame.addEventListener("click", function () {
 	            var audioElement = document.getElementById("audio");
 	            audioElement.play();
 	            movieFrame.classList.add("playing");
 	        });
 	    };
+	    /**
+	     * H2MD動画を再生します。
+	     * @param h2mdPath
+	     */
 	    Demo03.prototype.playH2MDMovie = function (h2mdPath) {
 	        var _this = this;
 	        var instance = new H2MD();
@@ -72,8 +83,6 @@
 	        instance.jsonp(true);
 	        // H2MDリソースの読み込み
 	        instance.open(h2mdPath, function () {
-	            // openに成功したら再生
-	            // instance.play();
 	            _this.onH2MDOpnend(instance);
 	        });
 	        instance.error(function (message) {
@@ -88,61 +97,26 @@
 	            var idx = audio.currentTime * movie_info.fps;
 	            var src_canvas = instance.decode(Math.floor(idx));
 	            if (!src_canvas) {
-	                console.log("aaa");
 	                return;
 	            } // loading
-	            _this.dst_canvas.drawImage(src_canvas, 0, 0);
+	            _this.context2D.drawImage(src_canvas, 0, 0);
 	        }, 10);
+	    };
+	    /**
+	     * canvas要素のリサイズ処理です。
+	     */
+	    Demo03.prototype.resizeCanvas = function () {
+	        var playerSection = document.getElementById("playerSection");
+	        var playerWrapper = document.getElementById("playerWrapper");
+	        var player = document.getElementById("player");
+	        var movieWidth = 640;
+	        var ratio = (window.innerWidth - 20) / movieWidth;
+	        player.style.width = movieWidth * ratio + "px";
+	        player.style.height = 360 * ratio + "px";
 	    };
 	    return Demo03;
 	}());
 	window.addEventListener("DOMContentLoaded", function () { return new Demo03(); });
-
-
-/***/ },
-/* 1 */,
-/* 2 */
-/***/ function(module, exports) {
-
-	"use strict";
-	/**
-	 * キャンバスのUtilクラスです。
-	 */
-	var CanvasUtil = (function () {
-	    function CanvasUtil() {
-	    }
-	    /**
-	     * @param canvasId キャンバスID
-	     */
-	    CanvasUtil.resizeCanvas = function (canvasId, targetWidth, targetHeight) {
-	        if (targetWidth === void 0) { targetWidth = 0; }
-	        if (targetHeight === void 0) { targetHeight = 0; }
-	        var canvas = document.getElementById(canvasId);
-	        if (!canvas) {
-	            return;
-	        }
-	        var width;
-	        if (targetWidth === 0) {
-	            width = Number(canvas.getAttribute("width"));
-	        }
-	        else {
-	            width = targetWidth;
-	        }
-	        var height;
-	        if (targetHeight === 0) {
-	            height = Number(canvas.getAttribute("height"));
-	        }
-	        else {
-	            height = targetHeight;
-	        }
-	        canvas.setAttribute("width", String(width * 2));
-	        canvas.setAttribute("height", String(height * 2));
-	        canvas.style.width = width + "px";
-	        canvas.style.height = height + "px";
-	    };
-	    return CanvasUtil;
-	}());
-	exports.CanvasUtil = CanvasUtil;
 
 
 /***/ }

@@ -1,35 +1,42 @@
-import {CanvasUtil} from "./modules/CanvasUtil";
-import {H2MDUtil} from "./modules/H2MDUtil";
-
 declare var H2MD;
-
+/**
+ * デモ1のクラスです。
+ */
 class Demo03 {
-
-  private canvasElement:HTMLCanvasElement;
-
-  private dst_canvas;
-
+  /** canvas要素のIDです。 */
   private CANVAS_ID:string = "player";
+  /** H2MD動画のパスです。 */
+  private H2MD_SRC:string = "./h2md/demo03/fireworks.h2md";
+  /** Cavnas要素です。 */
+  private canvasElement:HTMLCanvasElement;
+  /** CavnasのContext2Dです。 */
+  private context2D;
 
   constructor() {
-    this.playH2MDMovie("./h2md/demo03/fireworks.h2md");
-    CanvasUtil.resizeCanvas(this.CANVAS_ID, window.innerWidth, window.innerWidth * 270 / 480);
+    this.playH2MDMovie(this.H2MD_SRC);
     this.canvasElement = <HTMLCanvasElement> document.getElementById(this.CANVAS_ID);
-    this.dst_canvas = this.canvasElement.getContext("2d");
+    this.context2D = this.canvasElement.getContext("2d");
+    this.resizeCanvas();
     this.addEvents();
   }
 
+  /**
+   * イベント設定です。
+   */
   private addEvents():void {
-    const movieFrame:HTMLDivElement = <HTMLDivElement> document.getElementById("movieFrame");
+    const movieFrame:HTMLDivElement = <HTMLDivElement> document.getElementById("playerWrapper");
 
     movieFrame.addEventListener("click", () => {
       const audioElement:HTMLAudioElement = <HTMLAudioElement> document.getElementById("audio");
       audioElement.play();
       movieFrame.classList.add("playing");
     });
-
   }
 
+  /**
+   * H2MD動画を再生します。
+   * @param h2mdPath
+   */
   private playH2MDMovie(h2mdPath:string):void {
     const instance = new H2MD();
     // canvas要素の指定
@@ -40,9 +47,6 @@ class Demo03 {
 
     // H2MDリソースの読み込み
     instance.open(h2mdPath, () => {
-      // openに成功したら再生
-      // instance.play();
-
       this.onH2MDOpnend(instance);
     });
 
@@ -58,11 +62,23 @@ class Demo03 {
       const idx = audio.currentTime * movie_info.fps;
       const src_canvas = instance.decode(Math.floor(idx));
       if (!src_canvas) {
-        console.log("aaa");
         return;
       } // loading
-      this.dst_canvas.drawImage(src_canvas, 0, 0);
+      this.context2D.drawImage(src_canvas, 0, 0);
     }, 10);
+  }
+
+  /**
+   * canvas要素のリサイズ処理です。
+   */
+  private resizeCanvas():void {
+    const playerSection = document.getElementById("playerSection");
+    const playerWrapper = document.getElementById("playerWrapper");
+    const player = document.getElementById("player");
+    const movieWidth:number = 640;
+    const ratio = (window.innerWidth - 20) / movieWidth;
+    player.style.width = `${movieWidth * ratio}px`;
+    player.style.height = `${360 * ratio}px`;
   }
 }
 

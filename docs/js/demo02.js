@@ -45,13 +45,32 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var CanvasUtil_1 = __webpack_require__(2);
 	var H2MDUtil_1 = __webpack_require__(1);
-	window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
-	function onDOMContentLoaded() {
-	    H2MDUtil_1.H2MDUtil.playH2MDMovie("player", "./h2md/demo02/men_kiri.h2md");
-	    CanvasUtil_1.CanvasUtil.resizeCanvas("player");
-	}
+	/**
+	 * デモ2のクラスです。
+	 */
+	var Demo02 = (function () {
+	    function Demo02() {
+	        /** canvas要素のIDです。 */
+	        this.CANVAS_ID = "player";
+	        /** H2MD動画のパスです。 */
+	        this.H2MD_SRC = "./h2md/demo02/men_kiri.h2md";
+	        H2MDUtil_1.H2MDUtil.playH2MDMovie(this.CANVAS_ID, this.H2MD_SRC);
+	        this.resizeCanvas();
+	    }
+	    /**
+	     * canvas要素のリサイズ処理です。
+	     */
+	    Demo02.prototype.resizeCanvas = function () {
+	        var canvas = document.getElementById(this.CANVAS_ID);
+	        var width = Number(canvas.getAttribute("width"));
+	        var height = Number(canvas.getAttribute("height"));
+	        canvas.style.width = String(width / 2) + "px";
+	        canvas.style.height = String(height / 2) + "px";
+	    };
+	    return Demo02;
+	}());
+	window.addEventListener("DOMContentLoaded", function () { return new Demo02(); });
 
 
 /***/ },
@@ -86,51 +105,6 @@
 	    return H2MDUtil;
 	}());
 	exports.H2MDUtil = H2MDUtil;
-
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	"use strict";
-	/**
-	 * キャンバスのUtilクラスです。
-	 */
-	var CanvasUtil = (function () {
-	    function CanvasUtil() {
-	    }
-	    /**
-	     * @param canvasId キャンバスID
-	     */
-	    CanvasUtil.resizeCanvas = function (canvasId, targetWidth, targetHeight) {
-	        if (targetWidth === void 0) { targetWidth = 0; }
-	        if (targetHeight === void 0) { targetHeight = 0; }
-	        var canvas = document.getElementById(canvasId);
-	        if (!canvas) {
-	            return;
-	        }
-	        var width;
-	        if (targetWidth === 0) {
-	            width = Number(canvas.getAttribute("width"));
-	        }
-	        else {
-	            width = targetWidth;
-	        }
-	        var height;
-	        if (targetHeight === 0) {
-	            height = Number(canvas.getAttribute("height"));
-	        }
-	        else {
-	            height = targetHeight;
-	        }
-	        canvas.setAttribute("width", String(width * 2));
-	        canvas.setAttribute("height", String(height * 2));
-	        canvas.style.width = width + "px";
-	        canvas.style.height = height + "px";
-	    };
-	    return CanvasUtil;
-	}());
-	exports.CanvasUtil = CanvasUtil;
 
 
 /***/ }
