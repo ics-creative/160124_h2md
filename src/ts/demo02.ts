@@ -11,6 +11,7 @@ class Demo02 {
   constructor() {
     H2MDUtil.playH2MDMovie(this.CANVAS_ID, this.H2MD_SRC);
     this.resizeCanvas();
+    window.addEventListener("resize", () => this.resizeCanvas());
   }
 
   /**

@@ -25,12 +25,22 @@ class Demo03 {
    */
   private addEvents():void {
     const movieFrame:HTMLDivElement = <HTMLDivElement> document.getElementById("playerWrapper");
-
-    movieFrame.addEventListener("click", () => {
-      const audioElement:HTMLAudioElement = <HTMLAudioElement> document.getElementById("audio");
-      audioElement.play();
-      movieFrame.classList.add("playing");
+    movieFrame.addEventListener("click", (event) => {
+      this.onMovieFrameClick(movieFrame);
     });
+    window.addEventListener("resize", () => this.resizeCanvas());
+  }
+
+  /**
+   * movieFrameをクリックした時のイベントです。
+   * @param movieFrame
+   */
+  private onMovieFrameClick(movieFrame:HTMLDivElement):void {
+    // 音声の再生を開始します。
+    const audioElement:HTMLAudioElement = <HTMLAudioElement> document.getElementById("audio");
+    audioElement.play();
+    // movieFrameにプレイ中のクラスを設定します。
+    movieFrame.classList.add("playing");
   }
 
   /**
